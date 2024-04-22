@@ -1,88 +1,92 @@
-import tkinter as tk
 from robottools import RobotTools
+import PySimpleGUI as sg
 
-rt = RobotTools(ip="192.168.11.41", port=22222)
+rt = RobotTools('192.168.11.41', 22222)
 
-def start_idle():
-    # アイドルモーションを開始する
-    rt.play_idle_motion()
+# GUI設定
+sg.theme()
+# ウインドウのレイアウトの作成
+# レイアウトはグリッド（2次元リスト）で表現される
+layout = []
 
-def stop_idle():
-    # アイドルモーションを終了する
-    rt.stop_idle_motion()
-    
-def reset_pose():
-    # ポーズをリセットする
-    servo_map = dict(HEAD_R=0, HEAD_P=-5, HEAD_Y=0, BODY_Y=0, 
-                     L_SHOU=-90, L_ELBO=0, R_SHOU=90, R_ELBO=0)
-    pose = dict(Msec=1000, ServoMap=servo_map)
-    rt.play_pose(pose)
+# モーションボタンのレイアウト
+layout.append(
+    [
+        sg.Button('アイドルモーション開始', key='idle'),
+        sg.Button('アイドルモーション停止', key='stop'),
+        sg.Button('ポーズリセット', key='reset')    
+    ]
+)
 
-def say_text(text:str):
-    # 引数で与えた文字列を発話
-    rt.say_text(text)
+# 発話ボタンのレイアウト
+text_1 = 'こんにちは。ぼくはソータです。'
+layout.append(
+    [
+        sg.Text(text_1, size=(50, 1)),
+        sg.Button('発話', key='speak_1')
+    ]
+)
 
-# メインウィンドウを作成
-root = tk.Tk()
-root.title("RobotContrller GUI")
+text_2 = '同志社大学文化情報学部へようこそ。'
+layout.append(
+    [
+        sg.Text(text_2, size=(50, 1)),
+        sg.Button('発話', key='speak_2')
+    ]
+)
 
-# 1段目のフレーム（ボタンを3つ置く）
-frame1 = tk.Frame(root)
-frame1.pack(fill='x', padx=10, pady=5)
+text_3 = 'これからどうぞ、よろしくお願いします。'
+layout.append(
+    [
+        sg.Text(text_3, size=(50, 1)),
+        sg.Button('発話', key='speak_3')
+    ]
+)
 
-# 1段目
-button1_1 = tk.Button(frame1, text="アイドルモーション開始", command=start_idle)
-button1_1.pack(side="left", padx=10)
-button1_2 = tk.Button(frame1, text="アイドルモーション停止", command=stop_idle)
-button1_2.pack(side="left", padx=10)
-button1_3 = tk.Button(frame1, text="ポーズリセット", command=reset_pose)
-button1_3.pack(side="left", padx=10)
+# テキストの自由入力
+layout.append(
+    [
+        sg.InputText(key='free_speech_field', size=(50, 1)),
+        sg.Button('発話', key='speak_free')
+    ]
+)
 
-# 2段目のフレーム（ラベルとボタン用）
-frame2 = tk.Frame(root)
-frame2.pack(fill='x', padx=10, pady=5)
 
-# 2段目
-label2_1_text = tk.StringVar()
-label2_1_text.set("こんにちは。ぼくはソータです。")
-label2_1 = tk.Label(frame2, textvariable=label2_1_text)
-label2_1.pack(side="left", padx=10)
-button2_2 = tk.Button(frame2, text="発話", command=lambda: say_text(label2_1_text.get()))
-button2_2.pack(side="right", padx=10)
+# ウインドウにレイアウトを設定
+window = sg.Window('Sota controller', layout)
 
-# 3段目のフレーム（ラベルとボタン用）
-frame3 = tk.Frame(root)
-frame3.pack(fill='x', padx=10, pady=5)
+# Event loop
+while True:
+    event, values = window.read(timeout=1)
+    if event is None:
+        print('Window event is None. exit')
+        break
+    elif event == 'speak_1':
+        d = rt.say_text(text_1)
+        m = rt.make_beat_motion(d)
+        rt.play_motion(m)
+    elif event == 'speak_2':
+        d = rt.say_text(text_2)
+        m = rt.make_beat_motion(d)
+        rt.play_motion(m)
+    elif event == 'speak_3':
+        d = rt.say_text(text_3)
+        m = rt.make_beat_motion(d)
+        rt.play_motion(m)
+    elif event == 'speak_free':
+        d = rt.say_text(values['free_speech_field'])
+        m = rt.make_beat_motion(d)
+        rt.play_motion(m)
+    elif event == 'idle':
+        rt.play_idle_motion()
+    elif event == 'stop':
+        rt.stop_idle_motion()
+    elif event == 'reset':
+        servo_map = dict(HEAD_R=0, HEAD_P=-5, HEAD_Y=0, BODY_Y=0, 
+                         L_SHOU=-90, L_ELBO=0, R_SHOU=90, R_ELBO=0)
+        pose = dict(Msec=500, ServoMap=servo_map)
+        rt.play_pose(pose)
+    else:
+        pass
 
-# 3段目
-label3_1_text = tk.StringVar()
-label3_1_text.set("同志社大学文化情報学部へようこそ。")
-label3_1 = tk.Label(frame3, textvariable=label3_1_text)
-label3_1.pack(side="left", padx=10)
-button3_2 = tk.Button(frame3, text="発話", command=lambda: say_text(label3_1_text.get()))
-button3_2.pack(side="right", padx=10)
-
-# 4段目のフレーム（ラベルとボタン用）
-frame4 = tk.Frame(root)
-frame4.pack(fill='x', padx=10, pady=5)
-
-# 4段目
-label4_1_text = tk.StringVar()
-label4_1_text.set("これからどうぞ、よろしくお願いします。")
-label4_1 = tk.Label(frame4, textvariable=label4_1_text)
-label4_1.pack(side="left", padx=10)
-button4_2 = tk.Button(frame4, text="発話", command=lambda: say_text(label4_1_text.get()))
-button4_2.pack(side="right", padx=10)
-
-# 5段目のフレーム（エントリーフィールドとボタン用）
-frame5 = tk.Frame(root)
-frame5.pack(fill='x', padx=10, pady=5)
-
-# 5段目
-entry = tk.Entry(frame5)
-entry.pack(side="left", padx=10, expand=True, fill='x')  # expandとfillを使用してエントリーを広げる
-button5_1 = tk.Button(frame5, text="発話", command=lambda: say_text(entry.get()))
-button5_1.pack(side="right", padx=10)
-
-# イベントループに入る
-root.mainloop()
+window.close()
