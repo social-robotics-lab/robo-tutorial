@@ -1,0 +1,88 @@
+# Intel Edison版Sotaの場合
+- Wifi接続
+  - [QRコード生成サイト](http://www.vstone.co.jp/sotamanual/index.php?QRコードで接続)でWifiのSSIDとPASSを入力し、QRコードを生成
+  - Sotaの設定モードの「QRコードで接続」を選択
+- IPアドレス確認
+  - Sotaの設定モードの「IPアドレス」を選択
+- Sotaにログイン
+  - 自分のPCでWindows Terminalを開く
+  - `ssh root@192.168.11.10` ←SotaのIPアドレスを入力
+  - パスワードは`edison00`
+- パッケージのインストール
+  - Sota内で下記のコマンドを順番に実行し、インストール
+  - `opkg update`
+  - `opkg install git`
+- FFmpegのインストール
+  - `wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-i686-static.tar.xz`
+  - `tar -xf ffmpeg-release-i686-static.tar.xz`
+  - `rm ffmpeg-release-i686-static.tar.xz `
+- RobotController_binのインストール
+  - Sota内で下記のコマンドを順番に実行し、インストール
+  - `git clone https://github.com/social-robotics-lab/RobotController_bin.git`
+  - `cd RobotController_bin`
+  - `mkdir RobotController_lib`
+  - `cd RobotController_lib`
+  - `git clone https://github.com/vstoneofficial/SotaSample.git`
+  - `cp SotaSample/lib/* .`
+  - `rm -rf SotaSample/`
+  - `wget https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar`
+  - `wget https://repo1.maven.org/maven2/org/json/json/20180813/json-20180813.jar `
+  - `cp /home/vstone/lib/sotalib.jar .`
+- RobotControllerの起動テスト
+  - Sota内で下記のコマンドを実行
+  - `cd ~/RobotController_bin`
+  - `java -jar RobotController.jar`
+    - 実行するとサーボモーターに電流が入り軸が固定される。
+    - 終了する時は`ctrl + c`を押す
+- PoseReader_binのインストール
+  - Sota内で下記のコマンドを順番に実行し、インストール
+  - `git clone https://github.com/social-robotics-lab/PoseReader_bin.git`
+  - `cd PoseReader_bin`
+  - `mkdir PoseReader_lib`
+  - `cd PoseReader_lib`
+  - `git clone https://github.com/vstoneofficial/SotaSample.git`
+  - `cp SotaSample/lib/* .`
+  - `rm -rf SotaSample/`
+  - `wget https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar`
+  - `wget https://repo1.maven.org/maven2/org/json/json/20180813/json-20180813.jar`
+  - `cp /home/vstone/lib/sotalib.jar .`
+***
+
+# Raspberry Pi版パペットの場合
+- Wifi接続
+  - [QRコード生成サイト](http://www.vstone.co.jp/sotamanual/index.php?QRコードで接続)でWifiのSSIDとPASSを入力し、QRコードを生成
+    - 設定モードの「QRコードで接続」を選択
+- IPアドレス確認
+  - 設定モードの「IPアドレス」を選択
+- パペットにログイン
+  - 自分のPCでWindows Terminalを開く
+  - `ssh pi@192.168.11.10`（パペットのIPアドレスを入力）
+  - パスワードは`raspberry`
+- パッケージのインストール
+  - パペット内で下記のコマンドを順番に実行し、インストール
+  - `sudo apt update`
+  - `sudo apt install -y git`
+- FFmpegのインストール
+  - `sudo apt install -y ffmpeg`
+- RobotController_binのインストール
+  - Sota内で下記のコマンドを順番に実行し、インストール
+  - `git clone https://github.com/social-robotics-lab/RobotController_bin.git`
+  - `cd RobotController_bin`
+  - `mkdir RobotController_lib`
+  - `cd RobotController_lib`
+  - `git clone https://github.com/vstoneofficial/SotaSample.git`
+  - `cp SotaSample/lib/* .`
+  - `rm -rf SotaSample/`
+  - `wget https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar`
+  - `wget https://repo1.maven.org/maven2/org/json/json/20180813/json-20180813.jar `
+- RobotController_binの設定ファイルの変更
+  - `cd ~/RobotController_bin`
+  - `nano System.properties`
+  - SotaをDogに変更
+  - `ctrl + o`で保存、`ctrl + x`で終了
+- RobotControllerの起動テスト
+  - パペット内で下記のコマンドを実行
+  - `cd ~/RobotController_bin`
+  - `sudo java -jar RobotController.jar` ←sudoを付けるのがポイント。これをつけないと発話しない。
+  - 実行するとサーボモーターに電流が入り軸が固定される。
+  - 終了する時は`ctrl + c`を押す
