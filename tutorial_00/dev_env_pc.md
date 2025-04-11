@@ -61,6 +61,10 @@ brew install portaudio
 pip3 install pydub gtts FreeSimpleGUI opencv-python opencv-contrib-python ffmpeg-python openai azure-cognitiveservices-speech pyaudio
 ```
 
+### Visual Studio Code（プログラムを書くエディタ）のインストール
+- [こちら](https://code.visualstudio.com/docs?dv=osx)をクリックして、VSCodeのzipファイルをインストール
+- 解凍してアプリケーションに移す
+
 ### プログラム保存場所
 - ホームディレクトリ(`/Users/ユーザ名`)の下に`workspace`というフォルダを作成
 - このチュートリアルで作成するプログラムは`/Users/ユーザ名/workspace`に保存していく
