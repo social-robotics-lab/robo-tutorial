@@ -18,7 +18,7 @@
 - コマンドプロンプトに次のコマンドを入力：`winget install Gyan.FFmpeg`
 
 
-### Pythonモジュールのインストール
+### Pythonモジュール(pydub,gttsなど)のインストール
 - コマンドプロンプトを開く
 - コマンドプロンプトに次のコマンドを入力：`pip install pydub gtts pysimplegui opencv-python opencv-contrib-python ffmpeg-python`
 
@@ -28,6 +28,9 @@
 - PCを再起動
 - コマンドプロンプトを開く
 - コマンドプロンプトに次のコマンドを入力：`pip install azure-cognitiveservices-speech`
+
+### FreeSimpleGUI(ボタン(GUI)を作成するためのモジュール,PysimpleGUIの代替品)のインストール
+- コマンドプロンプトに次のコマンドを入力：`pip install FreeSimpleGUI`
 
 ### プログラム保存場所
 - `C:\Users\ユーザ名`の下に`workspace`というフォルダを作成
