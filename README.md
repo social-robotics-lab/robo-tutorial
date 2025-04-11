@@ -7,6 +7,7 @@
 - [ロボットへのログイン・RobotController起動](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_00/robot_login.md)
 
 ## Tutorial 01
+- [VisualSutudioCodeをはじめてつかうときに](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_01/vscode.md)
 - [ロボットを動かすサンプルプログラムの実行](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_01/)
 - [【補足】RobotControllerとの通信プロトコル](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_00/rc_protocol.md)
 - [【補足】ロボットの関節軸情報](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_00/robot_axes.md)
