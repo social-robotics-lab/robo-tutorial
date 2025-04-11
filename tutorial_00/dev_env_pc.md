@@ -20,7 +20,7 @@
 
 ### Pythonモジュール(pydub,gttsなど)のインストール
 - コマンドプロンプトを開く
-- コマンドプロンプトに次のコマンドを入力：`pip install pydub gtts pysimplegui opencv-python opencv-contrib-python ffmpeg-python FreeSimpleGUI`
+- コマンドプロンプトに次のコマンドを入力：`pip install pydub gtts FreeSimpleGUI opencv-python opencv-contrib-python ffmpeg-python`
 
 ### Microsoft Azure Python Speech SDK
 - Visual C++ 再頒布可能パッケージをインストール
@@ -39,4 +39,4 @@
 - terminal.app を起動し、その上で `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` を実行して homebrew をインストール
 - 同じく terminal 上で `brew install python@3.12` で python3.12 がインストールされる
 - 同じく terminal 上で `brew install ffmpeg` で ffmpeg をインストール
-- 同じく terminal 上で `pip3 install pydub gtts pysimplegui opencv-python opencv-contrib-python ffmpeg-python FreeSimpleGUI` で Pythonモジュール(pydub,gttsなど) をインストール
+- 同じく terminal 上で `pip3 install pydub gtts FreeSimpleGUI opencv-python opencv-contrib-python ffmpeg-python` で Pythonモジュール(pydub,gttsなど) をインストール
