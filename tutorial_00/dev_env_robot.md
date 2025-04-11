@@ -1,4 +1,6 @@
-# Intel Edison版Sotaの場合
+# Tutorial00 -ロボットの環境構築
+
+## Intel Edison版Sotaの場合
 - Wifi接続
   - [QRコード生成サイト](http://www.vstone.co.jp/sotamanual/index.php?QRコードで接続)でWifiのSSIDとPASSを入力し、QRコードを生成
   - Sotaの設定モードの「QRコードで接続」を選択
