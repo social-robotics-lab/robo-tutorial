@@ -1,4 +1,4 @@
-# Tutorial00 -ロボットの環境構築
+# -ロボットの環境構築-
 
 ## Intel Edison版Sotaの場合
 - Wifi接続
