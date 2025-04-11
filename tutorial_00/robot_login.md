@@ -1,4 +1,4 @@
-# Tutorial00 -ロボットへのログイン・RobotController起動
+# ロボットへのログイン・RobotController起動
 
 ## Sotaのネットワークへの接続
 - Sotaを学校や自宅のネットワークに接続するには、[QRコードで接続](https://vstone.co.jp/sotamanual/index.php?QR%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E6%8E%A5%E7%B6%9A)を利用する。
