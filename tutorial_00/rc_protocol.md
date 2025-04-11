@@ -1,4 +1,4 @@
-# RobotControllerとの通信プロトコル
+# -RobotControllerとの通信プロトコル-
 
 RobotControllerとの通信は、
 1. 指令コマンド（play_pose, play_motion, play_wav, etc）の文字列を送信
