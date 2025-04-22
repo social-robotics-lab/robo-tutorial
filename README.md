@@ -1,6 +1,9 @@
 # はじめに
 同志社大学 文化情報学部 ソーシャルロボティクス研究室（担当：飯尾）でSota (CommU, Puppet)を使用したプログラムを開発するためのチュートリアルです。
 
+下記のTutorial 00「開発環境の構築」に従って、開発環境を構築してください。
+「まったくわからん。お手上げ」という人は、第2回の授業の初めに少し説明しますので、そこで構築をしてください。
+
 ## Tutorial 00
 - [開発環境の構築](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_00/dev_env_pc.md)
 - [ロボットの環境構築](https://github.com/social-robotics-lab/robo-tutorial/blob/main/tutorial_00/dev_env_robot.md)
